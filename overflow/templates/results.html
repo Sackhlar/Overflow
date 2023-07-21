@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tag Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Tags for your question</h2>
+    <p><strong>Your Question:</strong> {{ question }}</p>
+    <p><strong>Predicted Tags:</strong> {{ tags|join(', ') }}</p>
+    <a href="/">Ask another question</a>
+</body>
+</html>
