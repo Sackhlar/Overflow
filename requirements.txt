@@ -4,7 +4,7 @@ argon2-cffi==21.1.0
 argon2-cffi-bindings==21.1.0
 asttokens==2.0.5
 astunparse==1.6.3
-attrs==19.0.0
+attrs==19.3.0
 backcall==0.2.0
 backports.functools-lru-cache==1.6.4
 beautifulsoup4==4.10.0
