@@ -74,8 +74,6 @@ Markdown==3.4.3
 markdown-it-py==0.6.2
 MarkupSafe==2.0.1
 matplotlib==3.4.3
-matplotlib-inline==0.1.2
-menuinst==1.4.16
 mistune==0.8.4
 munkres==1.1.4
 murmurhash==1.0.5
