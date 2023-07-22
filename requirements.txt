@@ -1,5 +1,5 @@
 absl-py==1.4.0
-anyio==2.2.0
+anyio @ file:///home/conda/feedstock_root/build_artifacts/anyio_1688651106312/work/dist
 argon2-cffi @ file:///home/conda/feedstock_root/build_artifacts/argon2-cffi_1640817743617/work
 argon2-cffi-bindings @ file:///D:/bld/argon2-cffi-bindings_1666850789170/work
 asttokens @ file:///home/conda/feedstock_root/build_artifacts/asttokens_1670263926556/work
