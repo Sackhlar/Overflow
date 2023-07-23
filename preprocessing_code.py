@@ -31,9 +31,6 @@ def init():
     # Initialiser le lemmatiseur de NLTK
     lemmatizer = WordNetLemmatizer()
 
-    # Charger le modèle LDA
-    with open('C:/Users/matth/Documents/stack/lda_model.pkl', 'rb') as f:
-        lda_model = pickle.load(f)
 
 
     # Charger le dictionnaire
