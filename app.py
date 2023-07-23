@@ -69,6 +69,10 @@ import pyLDAvis.gensim_models as gensimvis
 
 # Data Persistency
 import pickle
+import spacy.cli
+spacy.cli.download("en_core_web_sm")
+
+nlp = spacy.load("en_core_web_sm")
 
 # Download necessary NLTK data
 nltk.download('stopwords')
@@ -76,9 +80,6 @@ nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 
-# Chargement du modèle de prétraitement
-with open('modelpreprod.pkl', 'rb') as f:
-    preprocess_text = pickle.load(f)
 
 # Appel de la fonction init() pour charger le modèle LDA et le dictionnaire
 preprocessing_code.init()
