@@ -10,6 +10,10 @@ from bs4 import BeautifulSoup
 import nltk
 import pickle
 import pandas as pd
+import gensim
+from gensim.models import LdaModel
+from gensim.corpora import Dictionary
+
 
 nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
@@ -31,11 +35,13 @@ def init():
     # Initialiser le lemmatiseur de NLTK
     lemmatizer = WordNetLemmatizer()
 
+with open('C:/Users/matth/Documents/stack/dictionary.pkl', 'rb') as f:
+    dictionary = pickle.load(f)
+
+with open('C:/Users/matth/Documents/stack/lda_model.pkl', 'rb') as f:
+    lda_model = pickle.load(f)
 
 
-    # Charger le dictionnaire
-    with open('C:/Users/matth/Documents/stack/dictionary.pkl', 'rb') as f:
-        dictionary = pickle.load(f)
 
 # Initialiser le script
 init()
@@ -85,6 +91,25 @@ df['Tags'] = df['Tags'].str.replace('<', '').str.replace('>', ' ').str.split()
 with open('modelpreprod.pkl', 'wb') as f:
     pickle.dump(preprocess_text, f)
 
+
+# Préparation des données
+texts = df['Text'].apply(lambda x: x.split()).tolist()
+dictionary = gensim.corpora.Dictionary(texts)
+corpus = [dictionary.doc2bow(text) for text in texts]
+
+# Entraînement du modèle LDA avec des hyperparamètres supplémentaires
+lda_model = gensim.models.LdaModel(
+    corpus=corpus,
+    id2word=dictionary,
+    num_topics=50,
+    passes=5,
+    iterations=5,  # Ajout de l'hyperparamètre 'iterations'
+   
+)
+
+# Sauvegarde du modèle LDA
+with open('lda_model.pkl', 'wb') as f:
+    pickle.dump(lda_model, f)
 
 # Fonction pour prédire les tags
 def predict_tags(preprocessed_text):
