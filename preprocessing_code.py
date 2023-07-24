@@ -83,7 +83,7 @@ def preprocess_text(text):
     return text
 
 # Supposez que df est votre dataframe initial
-df = pd.read_csv("C:/Users/matth/python/QueryResults.csv")
+df = pd.read_csv("C:/Users/matth/Documents/stack/QueryResults.csv")
 
 # Réduisez la taille de votre dataframe à 5000 lignes
 df = df.sample(n=5000, random_state=42)
