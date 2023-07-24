@@ -1,4 +1,5 @@
 import re
+import os
 import string
 import numpy as np
 from nltk.corpus import stopwords
@@ -24,6 +25,20 @@ lemmatizer = None
 lda_model = None
 dictionary = None
 
+def load_resources():
+    global lda_model, dictionary
+
+    # Chargement des ressources à partir de fichiers
+    with open(os.path.join(os.path.dirname(__file__), 'dictionary.pkl'), 'rb') as f:
+        dictionary = pickle.load(f)
+
+    with open(os.path.join(os.path.dirname(__file__), 'lda_model.pkl'), 'rb') as f:
+        lda_model = pickle.load(f)
+
+# Appeler la fonction pour charger les ressources
+load_resources()
+
+
 def init():
     global lemmatizer, lda_model, dictionary
 
@@ -35,11 +50,7 @@ def init():
     # Initialiser le lemmatiseur de NLTK
     lemmatizer = WordNetLemmatizer()
 
-with open('C:/Users/matth/Documents/stack/dictionary.pkl', 'rb') as f:
-    dictionary = pickle.load(f)
 
-with open('C:/Users/matth/Documents/stack/lda_model.pkl', 'rb') as f:
-    lda_model = pickle.load(f)
 
 
 

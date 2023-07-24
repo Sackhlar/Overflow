@@ -88,7 +88,6 @@ preprocessing_code.init()
 app = Flask(__name__)
 
 # Initialiser le module de prétraitement au démarrage de l'application
-preprocessing_code.init()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -99,4 +98,7 @@ def index():
     return render_template('form.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Pour une utilisation locale, utilisez le port 5000 par défaut (ou tout autre port de votre choix)
+    # Sur Heroku, la variable d'environnement PORT est automatiquement définie par le serveur Heroku
+    port = int(os.environ.get("PORT", 5000))  
+    app.run(host='0.0.0.0', port=port, debug=True)
